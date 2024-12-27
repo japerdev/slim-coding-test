@@ -26,9 +26,6 @@ composer.lock
 dist/
 node_modules/
 
-# Documentos Swagger (opcional si no se versionan)
-public/doc/
-
 # Archivos de Doctrine Cache
 src/var/doctrine/
 

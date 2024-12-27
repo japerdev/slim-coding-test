@@ -71,8 +71,6 @@ Para ver los detalles de dicho endpoint, parámetros admitidos, tipos de respues
 
 http://dev.acme-app.com/doc/
 
-O abriendo en un navegador el fichero `index.html` dentro del directorio `/public/doc`
-
 ## Excepciones
 
 Además de las excepciones genéricas de Slim, he creado estas 3 excepciones dentro del servicio PMS

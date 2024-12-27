@@ -1,0 +1,212 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API Prueba Técnica Acme",
+    "description": "API para consultar datos de reservas en hoteles.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://dev.acme-app.com/api/v1/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "booking",
+      "description": "Obtiene información relativa a las reservas"
+    }
+  ],
+  "paths": {
+    "/{hotel}/{room}": {
+      "get": {
+        "tags": [
+          "booking"
+        ],
+        "summary": "Obtiene la información de la reserva de una habitación de un hotel, si está estuviese ocupada.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/hotel"
+          },
+          {
+            "$ref": "#/components/parameters/room"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "La información se obtuvo correctamente.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/successResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Datos no encontrados",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "hotelNotFound": {
+                    "summary": "Hotel no encontrado",
+                    "value": {
+                      "message": "Hotel not found"
+                    }
+                  },
+                  "noBookings": {
+                    "summary": "No hay reservas",
+                    "value": {
+                      "message": "There are no bookings"
+                    }
+                  },
+                  "noBookingsFromHotelAndRoom": {
+                    "summary": "No hay reservas para el hotel y habitacón dados",
+                    "value": {
+                      "message": "There are no bookings for this hotel and this room"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "hotel": {
+        "in": "path",
+        "name": "hotel",
+        "description": "Identificador de Hotel",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "room": {
+        "in": "path",
+        "name": "room",
+        "description": "Número de habitación",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "successResponse": {
+        "type": "object",
+        "properties": {
+          "bookingId": {
+            "type": "string",
+            "enum": [
+              "52466671-59c0-4df1-be38-4484883c312c"
+            ],
+            "description": "Identificador de la reserva"
+          },
+          "hotel": {
+            "type": "string",
+            "enum": [
+              "5edd8e71-ef79-4a0c-8703-f57fe3bb2fe8"
+            ],
+            "description": "Identificador del hotel"
+          },
+          "locator": {
+            "type": "string",
+            "enum": [
+              "12345AB678CD9"
+            ],
+            "description": "Localizador de la reserva"
+          },
+          "room": {
+            "type": "string",
+            "enum": [
+              "123"
+            ],
+            "description": "Número de habitación"
+          },
+          "checkIn": {
+            "type": "string",
+            "enum": [
+              "2023-07-01"
+            ],
+            "description": "Fecha del check-in"
+          },
+          "checkOut": {
+            "type": "string",
+            "enum": [
+              "2023-07-10"
+            ],
+            "description": "Fecha del check-out"
+          },
+          "numberOfNights": {
+            "type": "integer",
+            "enum": [
+              9
+            ],
+            "description": "Número de noches"
+          },
+          "totalPax": {
+            "type": "integer",
+            "enum": [
+              1
+            ],
+            "description": "Número de huéspedes"
+          },
+          "guests": {
+            "type": "array",
+            "description": "Lista de huéspedes",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "enum": [
+                    "John"
+                  ],
+                  "description": "Nombre"
+                },
+                "lastname": {
+                  "type": "string",
+                  "enum": [
+                    "Doe"
+                  ],
+                  "description": "Apellidos"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "enum": [
+                    "1990-01-01"
+                  ],
+                  "description": "Fecha de nacimiento"
+                },
+                "passport": {
+                  "type": "string",
+                  "enum": [
+                    "AB-1234567-CD"
+                  ],
+                  "description": "Número de pasaporte"
+                },
+                "country": {
+                  "type": "string",
+                  "enum": [
+                    "ES"
+                  ],
+                  "description": "Código de país"
+                },
+                "age": {
+                  "type": "integer",
+                  "enum": [
+                    23
+                  ],
+                  "description": "Edad"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
