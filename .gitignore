@@ -1,0 +1,36 @@
+# Entornos locales y archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de IDEs
+.idea/
+*.iml
+
+# Composer
+vendor/
+composer.lock
+
+# Archivos de entorno
+.env
+.env.local
+.env.*
+
+# Archivos temporales y logs
+*.log
+*.cache
+*.bak
+*.swp
+
+# Directorios de compilación
+/build/
+dist/
+node_modules/
+
+# Documentos Swagger (opcional si no se versionan)
+public/doc/
+
+# Archivos de Doctrine Cache
+src/var/doctrine/
+
+# Otros archivos innecesarios
+__MACOSX/
